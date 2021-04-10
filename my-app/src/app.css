@@ -1,0 +1,25 @@
+.container
+{
+	width: 90%;
+	margin: 1rem auto;
+	border-radius: 0.2rem;
+	padding: 1rem;
+	background-color: rgb(161, 160, 160);
+}
+.heading
+{
+	width: 100%;
+	padding: 2rem;
+	text-align: center;
+	color: yellow;
+}
+
+
+@media only screen and (min-width: 830px) {
+	.container{width: 70%;}
+}
+
+
+@media only screen and (min-width: 750px) {
+	.container{width: 60%;}
+}

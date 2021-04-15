@@ -8,7 +8,7 @@ export class Posts extends Component {
   render(props) {
     //console.log(this.props.content);
     return this.props.data.map((post) => (
-        <Post key = {post.id} post = {post} markComplete = {this.props.markComplete} deletePost = {this.props.deletePost}/>
+        <Post key = {post.id} post = {post} markComplete = {this.props.markComplete} updateItem = {this.props.updateItem} deletePost = {this.props.deletePost}/>
     ))
   }
 }

@@ -4,7 +4,7 @@ import './styles.css';
 
 
 
-export class AddItem extends Component {
+export class EditItem extends Component {
     state = {
         post: ''
     }
@@ -13,8 +13,9 @@ export class AddItem extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        this.props.addItem(this.state.post);
-        this.setState({post: ''});
+        console.log(this.params.id);
+        //this.props.addItem(this.state.post);
+        //this.setState({post: ''});
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -38,10 +39,10 @@ export class AddItem extends Component {
           className="input"
           setItem = {this.setItem}
           />
-          <input type="submit" value="submit" className="submit"/>
+          <input type="submit" value="Edit" className="submit"/>
       </form>
       )
   }
 }
 
-export default AddItem;
+export default EditItem;

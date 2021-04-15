@@ -19,18 +19,25 @@ export class Post extends Component {
   }
 
   render(props) {
-    const { id, post, complete } = this.props.post;
+    const { id, post } = this.props.post;
 
-    console.log(complete);
     return (
-      <div className="item" style={this.getStyle()}>
+      <div className="item animate__animated animate__pulse" style={this.getStyle()}>
         <p className="p" style={this.toogleStyle()}>
         <span className="p-span">
           <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} className="checkbox" />
-          { post }
+          <input  
+          type="text" 
+          id={id} 
+          value={post} 
+          onChange = {
+            (e) => {
+              props.updateItem(e.target.value, id)
+            }
+          }
+          />
           </span>
           <span className="span">
-          <button style={{ marginLeft: '2rem' }} className="btn">Update</button>
           <button onClick = {this.props.deletePost.bind(this, id)} className="del">Delete</button>
           </span>
           </p>

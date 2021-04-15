@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Header from "./header";
 import Posts from "./components/posts";
 import AddItem from "./components/addItem";
+import { v4 as uuidv4 } from "uuid";
 
 import './app.css';
 
@@ -13,23 +14,23 @@ export class App extends Component {
     this.state = {
         data: [
           {
-            id: '1',
-            post: 'wash hands',
+            id: uuidv4(),
+            post: 'HTML',
             complete: false,
           },
           {
-            id: '2',
-            post: 'wear mask',
+            id: uuidv4(),
+            post: 'CSS',
             complete: false,
           },
           {
-            id: '3',
-            post: 'keep distance',
+            id: uuidv4(),
+            post: 'Javascript',
             complete: false,
           },
           {
-            id: '4',
-            post: 'Always Santise',
+            id: uuidv4(),
+            post: 'Git',
             complete: false,
           }
         ]
@@ -41,19 +42,25 @@ export class App extends Component {
       addItem = (post) => {
        //console.log(post);
        const newItem = {
-         id: 4,
+         id: uuidv4(),
          post: post
        }
         this.setState({data: [...this.state.data, newItem]})
       }
 
-          //Update item
-      updateItem = (post) => {
-       //console.log(post);
-       const newItem = {
-         post: post
-       }
-        this.setState({data: [...this.state.data, newItem]})
+      //Update item
+
+     // updateItem = this.updateItem.bind(this);
+
+      updateItem = (text, id) => {
+        const items = this.state.data;
+
+       items.map((item) => {
+        if(item.id === id) {
+          item.post = text;
+        }
+       });
+
       }
 
 
@@ -78,8 +85,8 @@ export class App extends Component {
       <>
       <div className="container">
       <Header />
-      <AddItem addItem={this.addItem}/>
-      <Posts data = {this.state.data} markComplete = {this.markComplete} deletePost = {this.deletePost}/>
+      <AddItem addItem = {this.addItem} />
+      <Posts data = {this.state.data} markComplete = {this.markComplete} updateItem = {this.updateItem} deletePost = {this.deletePost}/>
       </div>
       </>
       )
